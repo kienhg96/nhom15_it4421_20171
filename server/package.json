@@ -1,0 +1,25 @@
+{
+  "name": "admin-server",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "bin": {
+    "admin-server": "rb.js"
+  },
+  "scripts": {
+    "start": "node index",
+    "createAdmin": "node ./bin/createAdmin"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "bcrypt-nodejs": "0.0.3",
+    "body-parser": "^1.17.2",
+    "cookie-parser": "^1.4.3",
+    "dotenv": "^4.0.0",
+    "express": "^4.15.4",
+    "mongoose": "^4.11.10",
+    "optimist": "^0.6.1",
+    "redis": "^2.8.0"
+  }
+}
