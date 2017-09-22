@@ -1,4 +1,4 @@
-const Session = require(`${r}/redisModels/Session`);
+const Session = require(`${r}/models/Session`);
 
 module.exports = (req, res, next) => {
 	const { sid } = req.cookies;
