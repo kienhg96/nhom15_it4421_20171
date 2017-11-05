@@ -8,6 +8,9 @@ client.on('error', (err) => {
 
 client.on('connect', (connect) => {
 	console.log('[i] Redis client connected to redis');
+	client.select(3, () => {
+		console.log('[R] Connected to database 3');
+	})
 });
 
 module.exports = client;

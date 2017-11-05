@@ -1,0 +1,7 @@
+.comment-user {
+	font-weight: 500;
+}
+
+.comment-wrapper:not(:first-child) {
+	margin-top: 5px;
+}

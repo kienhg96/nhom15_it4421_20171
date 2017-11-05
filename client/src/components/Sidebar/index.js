@@ -10,17 +10,19 @@ const style = {
 	drawerPaper: {
 		position: 'relative',
 		height: '100%',
-		width: '100%'
+		width: '100%',
+		background: '#F5F5F5'
 	},
 	drawerHeader: {
 		minHeight: 64,
 		display: 'flex',
 		alignItems: 'center',
-		paddingLeft: 20
+		paddingLeft: 20,
+		background: '#fff'
 	},
 };
 
-const Sidebar = ({ classes }) => (
+const UserSidebar = withStyles(style)(({ classes }) => (
 	<Drawer
 		type="permanent"
 		classes={{
@@ -36,7 +38,7 @@ const Sidebar = ({ classes }) => (
 		<List>
 			<Link to="/posts">
 				<ListItem button>
-						<ListItemText primary="Các bài báo" />
+					<ListItemText primary="Các bài báo" />
 				</ListItem>
 			</Link>
 			<Link to="/statistic/map">
@@ -51,6 +53,39 @@ const Sidebar = ({ classes }) => (
 			</Link>
 		</List>
 	</Drawer>
-);
+));
 
-export default withStyles(style)(Sidebar);
+const AdminSidebar = withStyles(style)(({ classes, showContent }) => (
+	<Drawer
+		type="permanent"
+		classes={{
+			paper: classes.drawerPaper,
+		}}
+	>
+		<div className={classes.drawerHeader}>
+			<Typography type="title">
+				TKGT - Admin
+			</Typography>
+		</div>
+		<Divider />
+		{ showContent && 
+			<List>
+				<Link to="/admin/new">
+					<ListItem button>
+						<ListItemText primary="Tạo bài báo mới" />
+					</ListItem>
+				</Link>
+				<Link to="/admin/postlist">
+					<ListItem button>
+						<ListItemText primary="Danh sách bài báo" />
+					</ListItem>
+				</Link>
+			</List>
+		}
+	</Drawer>
+));
+
+export {
+	UserSidebar,
+	AdminSidebar
+}

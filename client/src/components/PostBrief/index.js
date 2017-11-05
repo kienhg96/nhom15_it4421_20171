@@ -4,11 +4,14 @@ import Typography from 'material-ui/Typography';
 import { Link } from 'react-router-dom';
 import Seperate from '../../components/Seperate';
 
-export default ({ title, dead, injured, place, _id, time }) => (
+export default ({ title, dead, injured, place, _id, time, description }) => (
 	<div style={{ marginBottom: 10 }}>
 		<PaperContainer>
 			<Typography type="headline">
 				{title}
+			</Typography>
+			<Typography type="body1">
+				Vắn tắt: {description}
 			</Typography>
 			<Typography type="body1">
 				Số người chết: {dead}

@@ -3,6 +3,7 @@ const { Schema } = mongoose;
 
 const PostSchema = Schema({
 	title: String,
+	description: String,
 	content: String,
 	dead: Number,
 	injured: Number,
@@ -14,7 +15,21 @@ const PostSchema = Schema({
 			lng: Number
 		},
 		city: String
-	}
+	},
+	comments: [{
+		content: String,
+		user: {
+			type: Schema.Types.ObjectId,
+			ref: 'User'
+		}
+	}]
+});
+
+PostSchema.index({
+	title: 'text',
+	description: 'text',
+	content: 'text',
+	'place.raw': 'text',
 });
 
 module.exports = mongoose.model('Post', PostSchema);

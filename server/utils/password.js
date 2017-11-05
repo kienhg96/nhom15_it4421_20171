@@ -16,6 +16,7 @@ exports.compare = (password, hPassword) => {
 	return new Promise((resolve, reject) => {
 		bcrypt.compare(password, hPassword, (err, res) => {
 			if (err) {
+				console.error(err);
 				return reject(err);
 			}
 			return resolve(res);

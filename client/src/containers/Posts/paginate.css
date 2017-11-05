@@ -1,0 +1,38 @@
+.pagination {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.pagination ul {
+    display: inline-block;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+.pagination li {
+    display: inline-block;
+    cursor: pointer;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    margin-left: 5px;
+    margin-right: 5px;
+}
+
+.pagination li a {
+    padding: 10px;
+}
+
+.pagination li.active {
+	border: 1px solid #eee;
+	background-color: #eee;
+	border-radius: 5px;
+}
+
+.pagination li.disabled {
+	color: #ddd;
+}
+
+.pagination li a {
+	outline: none;
+}

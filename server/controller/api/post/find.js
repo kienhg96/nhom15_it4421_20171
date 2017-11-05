@@ -8,7 +8,9 @@ module.exports = (req, res, next) => {
 		page = 1;
 	}
 	if (_id) {
-		Post.findById(_id, (err, post) => {
+		Post.findById(_id)
+		.populate('comments.user')
+		.exec((err, post) => {
 			if (err) {
 				return next(err);
 			}
@@ -17,12 +19,13 @@ module.exports = (req, res, next) => {
 			});
 		});
 	} else {
-		Post.find({}, { content: 0 })
+		Post.find({})
 			.skip(PAGE_ITEM_COUNT * (page - 1))
 			.limit(PAGE_ITEM_COUNT)
 			.sort({
 				time: 'desc'
 			})
+			.populate('comments.user')
 			.exec((err, posts) => {
 				if (err) {
 					return next(err);

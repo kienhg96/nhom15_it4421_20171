@@ -36,7 +36,7 @@ exports.find = (req, res, next) => {
 }
 
 exports.delete = validator([
-	v('_id', 'objectId')
+	v('_id', V_OBJECTID)
 ]);
 
 exports.update = (req, res, next) => {
@@ -67,3 +67,16 @@ exports.update = (req, res, next) => {
 	}
 	return next();
 }
+
+exports.comment = validator([
+	v('comment', V_STRING),
+	v('_id', V_OBJECTID)
+]);
+
+exports.search = validator([
+	v('q', V_STRING)
+], 'query');
+
+exports.searchMeta = validator([
+	v('q', V_STRING)
+], 'query');

@@ -4,7 +4,7 @@ const googleGeocode = require(`${r}/constants/values`).GOOGLE_GEO_CODE;
 const key = process.env.GOOGLE_MAP_API_KEY;
 
 module.exports = (req, res, next) => {
-	const { _id, title, content, dead, injured, time, place } = req.body;
+	const { _id, title, description, content, dead, injured, time, place } = req.body;
 	Post.findById(_id, (err, post) => {
 		if (err) {
 			return next(err);
@@ -16,6 +16,9 @@ module.exports = (req, res, next) => {
 		}
 		if (title) {
 			post.title = title;
+		}
+		if (description) {
+			post.description = description;
 		}
 		if (content) {
 			post.content = content;

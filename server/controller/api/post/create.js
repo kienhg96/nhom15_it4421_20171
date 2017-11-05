@@ -4,7 +4,7 @@ const googleGeocode = require(`${r}/constants/values`).GOOGLE_GEO_CODE;
 const key = process.env.GOOGLE_MAP_API_KEY;
 
 module.exports = (req, res, next) => {
-	const { title, content, dead, injured, time, place } = req.body;
+	const { title, content, dead, injured, time, place, description } = req.body;
 	getRequest(`${googleGeocode}?address=${encodeURIComponent(place)}&key=${key}&language=vi`)
 	.then(response => {
 		let lat = undefined;
@@ -26,6 +26,7 @@ module.exports = (req, res, next) => {
 		const post = new Post({
 			title,
 			content,
+			description,
 			dead,
 			injured,
 			time: new Date(time),
